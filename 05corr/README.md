@@ -19,6 +19,13 @@ CCFLAGS = -g -O3 -restrict
 fix ave2 all ave/correlate/long 1 100 &
 v_pxxyy v_pxxzz v_pyyzz v_pxy v_pxz v_pyz file corr.dat overwrite ncorr 40
 ```
+v_pxxyy, v_pxxzz, v_pyyzz の定義は以下のとおり。
+```
+variable pxxyy equal (v_pxx-v_pyy)*0.5
+variable pxxzz equal (v_pxx-v_pzz)*0.5
+variable pyyzz equal (v_pyy-v_pzz)*0.5
+```
+
 
 ## 実行
 ```
