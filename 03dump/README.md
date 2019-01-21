@@ -24,7 +24,7 @@ dump d2 all custom 100 dump.u.lammpstrj id mol xu yu zu
 
 # OVITO
 
-※こちらは瀬戸亮平さんに教わりました。瀬戸亮平さんに感謝！
+※こちらは瀬戸亮平さんに当日教わりました。瀬戸さんに感謝！
 
 + [OVITO](https://ovito.org/)
 
