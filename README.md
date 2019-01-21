@@ -14,9 +14,9 @@ tar xvf lammps-stable.tar.gz
 cd lammps-${version}/src
 make -jN mpi
 ```
-`-jN` の N のところには数字が入る。1より大きい値を指定するとmakeが並列で実行されるためコンパイルが早く終わる。
+`-jN` はmake を並列で実行するためのオプション。 N のところには数字が入る。
 
-**(注)** Nはmake時の並列数。lammps実行時の並列数とは関係無し。
+**(注)** Nはmake時の並列数であり、LAMMPS実行時の並列数とは関係無し。
 
 # 内容
 1. [Kremer-Grestモデルの実行 01bench](./01bench) 
