@@ -14,6 +14,11 @@ make -jN mpi
 CCFLAGS = -g -O3 -restrict
 ```
 
+## Multiple-tau 法の設定箇所
+```
+fix ave2 all ave/correlate/long 1 100 &
+v_pxxyy v_pxxzz v_pyyzz v_pxy v_pxz v_pyz file corr.dat overwrite ncorr 40
+```
 
 ## 実行
 ```
