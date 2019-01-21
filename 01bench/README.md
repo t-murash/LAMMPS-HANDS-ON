@@ -1,6 +1,6 @@
-# Kremer-Grest モデルの実行 00bench
+# Kremer-Grest モデルの実行 01bench
 
-`lammps-${version}/bench`にあるKremer-Grest モデルのExampleを動かしてみる。
+`lammps-${version}/bench`にあるKremer-Grest モデル[1]のサンプルを動かしてみる。
 
 + `in.chain` プログラムの条件が書き込まれたインプットファイル
 + `data.chain` 高分子の本数M=320、高分子の長さN=100 のデータが入っているデータファイル
@@ -25,3 +25,6 @@ make -jN mpi
 
 **(注)** `make yes-${package}` でlammps-${version}/src にある${PACKAGE} のディレクトリ名を持つパッケージを追加することができる。
 
+
+## 文献
+[1] K. Kremer, G. S. Grest, J. Chem. Phys. 92, 5057, (1990); (Erratum) J. Chem. Phys. 94, 4103 (1991)

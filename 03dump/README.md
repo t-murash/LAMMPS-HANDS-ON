@@ -1,4 +1,4 @@
-# トラジェクトリーデータの出力&可視化 02dump
+# トラジェクトリーデータの出力&可視化 03dump
 
 1. 分子のトラジェクトリーデータを出力(dump)する。
 2. 出力したデータを使って、OVITO で動画を作る。
@@ -23,6 +23,8 @@ dump d2 all custom 100 dump.u.lammpstrj id mol xu yu zu
 + dump.u.lammpstrj 周期境界で折り返さない座標 
 
 # OVITO
+
+※こちらは瀬戸亮平さんに教わりました。瀬戸亮平さんに感謝！
 
 + [OVITO](https://ovito.org/)
 
@@ -49,7 +51,7 @@ dump.lammpstrj or dump.u.lammpstrj を読み込んでみる。(下はdump.u.lamm
 
 1. 右下のPerspective をクリックし、Preview Mode にする
 1. Preview Mode は実際の動画と同じものになるので、大きさ、向きを調整する。
-1. 右上のカメラマークをクリック、Render Active Viewportを開く。
+1. 右上のカメラマークをクリック、Render Active Viewportを開く。（左上のカメラマークをクリックすると動画作成が始まるので、その場合は一旦キャンセルする）
 1. Complete animation にチェック
 1. Save to file にチェック、Choose からgifを選択
 1. 左上のカメラマークをクリックすると、動画作成が始まる。
