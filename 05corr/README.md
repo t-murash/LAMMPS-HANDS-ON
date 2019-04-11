@@ -1,4 +1,4 @@
-# 応力の相関関数 04corr
+# 応力の相関関数 0corr
 
 応力の相関関数を計算する際、最近は Multiple-tau 法[1]がよく用いられる。LAMMPSにも実装されている (fix ave/correlate/long) ので試してみる。
 
