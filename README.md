@@ -10,6 +10,7 @@ LAMMPS の最新版(12Dec2018)をダウンロード。
 
 ## インストール
 ```
+wget http://lammps.sandia.gov/tars/lammps-stable.tar.gz
 tar xvf lammps-stable.tar.gz
 cd lammps-${version}/src
 make -jN mpi
