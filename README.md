@@ -1,9 +1,9 @@
 # 準備
 
 ## ダウンロード
-LAMMPS の最新版(12Dec2018)をダウンロード。
+LAMMPS の最新版(5Jul2019)をダウンロード。
 
-**(注)** ファイルサイズ **_400MB_** 
+**(注)** ファイルサイズ **_135MB_** 
 
 + [LAMMPSのダウンロードページ](https://lammps.sandia.gov/download.html)
 
@@ -25,5 +25,6 @@ make -jN mpi
 1. [トラジェクトリーデータ出力＆可視化 03dump](./03dump)
 1. [せん断変形、伸長変形の方法 04deform](./04deform)
 1. [応力の相関関数 05corr](./05corr)
+1. [Xeon Phi 06knl](./06knl)
 
 
