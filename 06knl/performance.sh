@@ -1,0 +1,1 @@
+grep Perf *.log | awk 'BEGIN{n=1}n%2==0{print $0}{n++}' | sed 's/\/day//g' | sed 's/steps\/s/steps_s/g' | sed 's/hours\/ns//g' | sed 's/.*\///g' | sed 's/\.log:Performance://g' | awk '{c=NF-1; print $1,$c " [timesteps/sec]"}'

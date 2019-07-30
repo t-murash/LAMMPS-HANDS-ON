@@ -1,0 +1,152 @@
+LAMMPS (5 Jun 2019)
+  using 4 OpenMP thread(s) per MPI task
+package intel 1
+package intel 0
+# Coarse-grain water simulation using Stillinger-Weber
+
+variable        N index on      # Newton Setting
+variable        w index 10      # Warmup Timesteps
+variable        t index 2600	# Main Run Timesteps
+variable        m index 1       # Main Run Timestep Multiplier
+variable        n index 0       # Use NUMA Mapping for Multi-Node
+variable        p index 0       # Use Power Measurement
+
+variable	x index 4
+variable	y index 2
+variable	z index 2
+variable        rr equal floor($t*$m)
+variable        rr equal floor(2600*$m)
+variable        rr equal floor(2600*1)
+
+newton          $N
+newton          on
+if "$n > 0"     then "processors * * * grid numa"
+
+units		real
+atom_style	atomic
+
+read_data	DATA/mW_32k_cube.data
+  orthogonal box = (-49.1972 -49.1972 -49.1972) to (49.1972 49.1972 49.1972)
+  2 by 2 by 17 MPI processor grid
+  reading atoms ...
+  32000 atoms
+  reading velocities ...
+  32000 velocities
+  read_data CPU = 0.252853 secs
+reset_timestep	0
+replicate	$x $y $z
+replicate	4 $y $z
+replicate	4 2 $z
+replicate	4 2 2
+  orthogonal box = (-49.1972 -49.1972 -49.1972) to (344.38 147.592 147.592)
+  17 by 2 by 2 MPI processor grid
+  512000 atoms
+  replicate CPU = 1.8028 secs
+
+pair_style	sw/intel
+pair_coeff	* * DATA/mW.sw mW
+Reading potential file DATA/mW.sw with DATE: 2007-06-11
+
+mass		1 18.015 #g/mol
+group		mW type 1
+512000 atoms in group mW
+
+neighbor	2 bin #Angstroms
+neigh_modify	every 1 delay 4
+
+fix		1 all nvt/intel temp 300.0 300.0 1000.0
+
+velocity	all zero linear
+
+timestep	10 #femtoseconds
+
+thermo_modify	norm yes
+
+thermo		1000
+
+if "$p > 0"     then "run_style verlet/power"
+
+if "$w > 0"     then "run $w"
+run $w
+run 10
+Neighbor list info ...
+  update every 1 steps, delay 4 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.3065
+  ghost atom cutoff = 6.3065
+  binsize = 3.15325, bins = 125 63 63
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair sw/intel, perpetual
+      attributes: full, newton on, intel
+      pair build: full/bin/intel
+      stencil: full/bin/3d
+      bin: intel
+Per MPI rank memory allocation (min/avg/max) = 71.26 | 71.62 | 71.87 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0    299.36211   -10.061928            0   -9.1695878    453.71748 
+      10    298.81568   -10.060116            0   -9.1694045    479.54017 
+Loop time of 0.0951504 on 272 procs for 10 steps with 512000 atoms
+
+Performance: 90.804 ns/day, 0.264 hours/ns, 105.097 timesteps/s
+237.7% CPU use with 68 MPI tasks x 4 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.059241   | 0.060339   | 0.061562   |   0.2 | 63.41
+Neigh   | 0.0095589  | 0.0096904  | 0.0098469  |   0.1 | 10.18
+Comm    | 0.009881   | 0.011224   | 0.013464   |   0.8 | 11.80
+Output  | 0.00018907 | 0.00019897 | 0.00021219 |   0.0 |  0.21
+Modify  | 0.010399   | 0.012098   | 0.013009   |   0.5 | 12.71
+Other   |            | 0.0016     |            |       |  1.68
+
+Nlocal:    7529.41 ave 7564 max 7490 min
+Histogram: 4 0 0 16 16 12 8 0 4 8
+Nghost:    7264.76 ave 7309 max 7194 min
+Histogram: 8 0 4 4 8 0 12 4 16 12
+Neighs:    0 ave 0 max 0 min
+Histogram: 68 0 0 0 0 0 0 0 0 0
+FullNghs:  253952 ave 255633 max 251987 min
+Histogram: 4 0 0 4 28 12 4 4 4 8
+
+Total # of neighbors = 17268717
+Ave neighs/atom = 33.728
+Neighbor list builds = 1
+Dangerous builds = 0
+run		${rr}
+run		2600
+Per MPI rank memory allocation (min/avg/max) = 71.26 | 71.62 | 71.87 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      10    298.81568   -10.060116            0   -9.1694045    479.54018 
+    1000    299.98471   -10.061642            0   -9.1674463    426.08246 
+    2000    300.30339   -10.062971            0   -9.1678253    411.76044 
+    2610     300.0042   -10.063515            0    -9.169261    405.34122 
+Loop time of 26.0047 on 272 procs for 2600 steps with 512000 atoms
+
+Performance: 86.385 ns/day, 0.278 hours/ns, 99.982 timesteps/s
+247.9% CPU use with 68 MPI tasks x 4 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 14.935     | 15.047     | 15.59      |   2.4 | 57.86
+Neigh   | 4.3459     | 4.3914     | 4.5066     |   1.0 | 16.89
+Comm    | 3.1128     | 3.2815     | 3.6831     |   8.1 | 12.62
+Output  | 0.00062895 | 0.00065085 | 0.00067186 |   0.0 |  0.00
+Modify  | 2.2936     | 2.7844     | 2.9385     |   8.0 | 10.71
+Other   |            | 0.5        |            |       |  1.92
+
+Nlocal:    7529.41 ave 7571 max 7498 min
+Histogram: 7 5 8 14 11 6 5 7 3 2
+Nghost:    7275.19 ave 7333 max 7219 min
+Histogram: 3 5 5 9 11 12 13 4 2 4
+Neighs:    0 ave 0 max 0 min
+Histogram: 68 0 0 0 0 0 0 0 0 0
+FullNghs:  254024 ave 256332 max 251859 min
+Histogram: 2 4 9 12 10 12 7 6 3 3
+
+Total # of neighbors = 17273621
+Ave neighs/atom = 33.7375
+Neighbor list builds = 452
+Dangerous builds = 0
+Total wall time: 0:00:28
