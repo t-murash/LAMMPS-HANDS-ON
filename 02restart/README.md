@@ -4,7 +4,7 @@
 
 1. in.chain.write_restart リスタートファイルの書き出し
 
-    00benchで使ったdata.chain を読み込み、res.chain.100 を書き出す
+    01benchで使ったdata.chain を読み込み、res.chain.100 を書き出す
 
 2. in.cahin.read_restart リスタートファイルの読み込み 
 
