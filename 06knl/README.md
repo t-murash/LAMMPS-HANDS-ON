@@ -4,7 +4,7 @@ LAMMPS は一部のコードが Xeon Phi x200 Knights Landing (KNL) に対応し
 
 
 
-## USER-INTEL 他、パッケージの追加
+## USER-INTEL, USER-OMP 他、パッケージの追加
 ```
 cd lammps-${version}/src
 make yes-asphere yes-class2 yes-kspace yes-manybody
@@ -18,7 +18,7 @@ make -j8 knl
 
 
 ## USER-INTEL を使用する場合のインプットファイルの変更箇所
-各インプットファイル `in.intel.***` を覗くと、`nve/intel`、`lj/cut/intel` のように、通常のコマンド名に`/intel` をつければよい。力の計算と時間発展のコマンドをスレッド並列化している。`USER-INTEL`内のファイルからどのコマンドが Xeon Phi に対応しているかわかる。
+各インプットファイル `in.intel.***` を覗くと、`nve/intel`、`lj/cut/intel` のように、通常のコマンド名に`/intel` をつければよい。力の計算と時間発展のコマンドをスレッド並列化している。`USER-INTEL`内のファイルからどのコマンドが対応しているかわかる。
 
 
 ## 実行
