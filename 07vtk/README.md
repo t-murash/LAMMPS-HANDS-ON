@@ -9,7 +9,7 @@
 
 ## cmake のインストール
 
-最新版をソースをダウンロード。
+最新版のソースをダウンロード。
 
 + [cmake のダウンロードページ](https://cmake.org/download/)
 
@@ -27,7 +27,7 @@ make install
 
 ## VTK のインストール
 
-最新版をソースをダウンロード。
+最新版のソースをダウンロード。
 
 + [VTK のダウンロードページ](https://vtk.org/download/)
 
