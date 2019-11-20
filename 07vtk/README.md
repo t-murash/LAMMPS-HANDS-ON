@@ -8,6 +8,7 @@
 1. Paraviewで可視化
 
 ## cmake のインストール
+**(注)** cmakeのバージョンが3.3以上であればこれは不要。
 
 最新版のソースをダウンロード。
 
@@ -18,12 +19,11 @@
 ```
 tar zxvf cmake-${version}.tar.gz
 cd cmake-${version}
-./configure --prefix=$HOME
+./configure
 make
-make install
+su
+# make install
 ```
-**(注)** cmake は`$HOME/bin`  にインストールされます。
-
 
 ## VTK のインストール
 
@@ -38,12 +38,12 @@ tar zxvf VTK-${version}.tar.gz
 cd VTK-${version}
 mkdir build
 cd build
-$HOME/bin/cmake ..
+cmake ..
 make
 su
 # make install
 ```
-**(注)** VTK は `/usr/local` 以下にインストールされます。
+
 
 ## USER-VTK のインストール
 
@@ -53,7 +53,7 @@ cmake を使ってインストールする。Makefileを書き換えるのはVTK
 cd lammps-${version}
 mkdir build
 cd build
-$HOME/bin/cmake ../cmake -DPKG_MOLECULE=yes -DPKG_USER-VTK=yes
+cmake ../cmake -DPKG_MOLECULE=yes -DPKG_USER-VTK=yes
 make
 ```
 
