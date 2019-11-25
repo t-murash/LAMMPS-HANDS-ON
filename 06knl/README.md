@@ -33,7 +33,8 @@ pjsub pjscript.sh
 
 LAMMPS を実行する際のコマンドは `run.sh` 内に記述しているが
 ```
-mpiexec.hydra -n 68 numactl --preferred=1 ./lmp_knl -in in.intel.*** -pk intel 0 -sf intel
+export OMP_NUM_THREADS=4
+mpiexec.hydra -n 68 numactl --preferred=1 ./lmp_knl -in in.*** -pk intel 0 -sf intel
 ```
 のようにする。後ろの `-pk intel 0 -sf intel` をつけると Intel Processor で最適化されるらしい。
 
