@@ -5,7 +5,7 @@
 ## USER-MISC の追加
 ```
 cd lammps-${version}/src
-make yes-user-misc
+make yes-extra-fix
 make -jN mpi
 ```
 **(注)** 環境によってはエラーが出てコンパイルできないことがある。その場合は、`-restrict` オプションを`Makefile.mpi` に追加する。 
@@ -29,8 +29,8 @@ variable pyyzz equal (v_pyy-v_pzz)*0.5
 
 ## 実行
 ```
-mpirun -n N ./lmp_mpi < in.chain.corr
-mpirun -n N ./lmp_mpi < in.chain.corr.restart # リスタートする場合の例
+mpirun -n N ./lmp_mpi -in in.chain.corr
+mpirun -n N ./lmp_mpi -in in.chain.corr.restart # リスタートする場合の例
 ```
 
 ## 引用文献
