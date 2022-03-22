@@ -1,5 +1,7 @@
 # Xeon Phi 06knl
 
+**(注)** このページはLAMMPS 7Aug2019 の情報で、最新版の内容に更新していません。
+
 LAMMPS は一部のコードが Xeon Phi x200 Knights Landing (KNL) に対応しており、[Oakforest-PACS](https://www.cc.u-tokyo.ac.jp/supercomputer/ofp/service/) で試してみる。 `USER-INTEL/TEST` を少し変更した。
 
 
@@ -33,8 +35,7 @@ pjsub pjscript.sh
 
 LAMMPS を実行する際のコマンドは `run.sh` 内に記述しているが
 ```
-export OMP_NUM_THREADS=4
-mpiexec.hydra -n 68 numactl --preferred=1 ./lmp_knl -in in.*** -pk intel 0 -sf intel
+mpiexec.hydra -n 68 numactl --preferred=1 ./lmp_knl -in in.intel.*** -pk intel 0 -sf intel
 ```
 のようにする。後ろの `-pk intel 0 -sf intel` をつけると Intel Processor で最適化されるらしい。
 
