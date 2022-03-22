@@ -35,7 +35,7 @@ fix ave1 all ave/time 1 100 100 v_pxx v_pyy v_pzz v_pxy v_pxz v_pyz c_mytemp fil
 ## せん断変形
  
 ```
-mpirun -n N ./lmp_mpi < in.chain.shear
+mpirun -n N ./lmp_mpi -in in.chain.shear
 ```
 
 ![せん断変形](img/dump.u.shear.gif)
@@ -45,7 +45,7 @@ mpirun -n N ./lmp_mpi < in.chain.shear
 ## 一軸伸長変形
 
 ```
-mpirun -n N ./lmp_mpi < in.chain.uni
+mpirun -n N ./lmp_mpi -in in.chain.uni
 ```
 
 ![伸長変形](img/dump.u.uni.gif)
