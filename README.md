@@ -1,16 +1,16 @@
 # 準備
 
 ## ダウンロード
-LAMMPS の最新版(7Aug2019)をダウンロード。
+LAMMPS の最新版(29Sep2021)をダウンロード。
 
-**(注)** ファイルサイズ **_384MB_** 
+**(注)** ファイルサイズ **_161MB_** 
 
 + [LAMMPSのダウンロードページ](https://lammps.sandia.gov/download.html)
 
 
 ## インストール
 ```
-wget http://lammps.sandia.gov/tars/lammps-stable.tar.gz
+wget https://download.lammps.org/tars/lammps-stable.tar.gz
 tar xvf lammps-stable.tar.gz
 cd lammps-${version}/src
 make -jN mpi
