@@ -6,7 +6,7 @@
 ## 実行方法
 
 ```
-mpirun -n N ./lmp_mpi < in.chain.dump
+mpirun -n N ./lmp_mpi -in in.chain.dump
 ```
 
 ## dump の設定箇所
@@ -28,7 +28,7 @@ dump d2 all custom 100 dump.u.lammpstrj id mol xu yu zu
 
 + [OVITO](https://ovito.org/)
 
-上記に行き、Ovitoをダウンロード(OVITO-3.0.0-dev322)＆インストール。
+上記に行き、Ovito Basicをダウンロード＆インストール。
 
 dump.lammpstrj or dump.u.lammpstrj を読み込んでみる。(下はdump.u.lammpstrj を読み込んだ例)
 
