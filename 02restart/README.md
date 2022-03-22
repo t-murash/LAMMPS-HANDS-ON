@@ -13,7 +13,7 @@
 ## リスタートファイルの書き出し
 
 ```
-mpirun -n N ./lmp_mpi < in.chain.write_restart
+mpirun -n N ./lmp_mpi -in in.chain.write_restart
 ```
 
 ### リスタートファイルを書き出している箇所
@@ -31,7 +31,7 @@ write_restart res.chain.100 # configuration data & simulation condition
 ## リスタートファイルの読み込み
 
 ```
-mpirun -n N ./lmp_mpi < in.chain.read_restart
+mpirun -n N ./lmp_mpi -in in.chain.read_restart
 ```
 
 ### リスタートファイルを読み込んでいる箇所
