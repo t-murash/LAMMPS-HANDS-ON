@@ -8,7 +8,7 @@
 ## 実行方法
 
 ```
-mpirun -n N ./lmp_mpi < in.chain
+mpirun -n N ./lmp_mpi -in in.chain
 ```
 
 **(注)**　`-n N` の N は実行時の並列数。
