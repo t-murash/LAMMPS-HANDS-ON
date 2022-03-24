@@ -2,17 +2,20 @@
 
 応力の相関関数を計算する際、最近は Multiple-tau 法[1]がよく用いられる。LAMMPSにも実装されている (fix ave/correlate/long) ので試してみる。
 
-## USER-MISC の追加
+## EXTRA-FIX の追加
 ```
 cd lammps-${version}/src
 make yes-extra-fix
 make -jN mpi
 ```
+
+<!--
 **(注)** 環境によってはエラーが出てコンパイルできないことがある。その場合は、`-restrict` オプションを`Makefile.mpi` に追加する。 
 ```
 #CCFLAGS = -g -O3
 CCFLAGS = -g -O3 -restrict
 ```
+-->
 
 ## Multiple-tau 法の設定箇所
 ```
