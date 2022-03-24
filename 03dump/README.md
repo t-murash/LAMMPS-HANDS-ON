@@ -23,8 +23,9 @@ dump d2 all custom 100 dump.u.lammpstrj id mol xu yu zu
 + dump.u.lammpstrj 周期境界で折り返さない座標 
 
 # OVITO
-
+<!--
 ※こちらは瀬戸亮平さんに当日教わりました。瀬戸さんに感謝！
+-->
 
 + [OVITO](https://ovito.org/)
 
@@ -59,4 +60,7 @@ dump.lammpstrj or dump.u.lammpstrj を読み込んでみる。(下はdump.u.lamm
 ## gif アニメ
 
 ![ovito-gif](img/dump.u-short.gif)
+
+## 謝辞
+Ovito の使い方は瀬戸亮平さんに教えていただきました。
 
